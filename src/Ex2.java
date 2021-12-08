@@ -20,8 +20,9 @@ public class Ex2 {
         DirectedWeightedGraph ans;
         AlgoGraphClass algoGraphClass = new AlgoGraphClass();
         algoGraphClass.load(json_file);
-        System.out.println(algoGraphClass.save("C:\\Users\\avi44\\IdeaProjects\\Ex2_06_12\\src\\saved.json"));
+        System.out.println(algoGraphClass.save("C:\\Users\\avi44\\OneDrive\\מסמכים\\GitHub\\Ex2_oop\\saved1.json"));
         ans = algoGraphClass.getGraph();
+
 
         return ans;
     }
@@ -36,10 +37,11 @@ public class Ex2 {
         DirectedWeightedGraphAlgorithms ans = new AlgoGraphClass();
         ans.init(getGrapg(json_file));
 
-//        System.out.println(ans.center());
+        System.out.println(ans.center());
+        ans.shortestPathDist(1,10);
 
 
-        System.out.println(ans.isConnected());
+
         return ans;
     }
 
@@ -59,6 +61,7 @@ public class Ex2 {
 
         String filename = "C:\\Users\\avi44\\IdeaProjects\\Ex2_06_12\\src\\data\\G1.json";
         getGrapgAlgo(filename);
+        runGUI(filename);
 
 
     }

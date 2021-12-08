@@ -33,7 +33,7 @@ public class GraphClass implements DirectedWeightedGraph {
                 this.connect(iter.curr.getKey(), (Integer) key, (Double) c.NodesHashMap.get(iter.curr.getKey()).getHashMap().get(key));
 
             }
-            iter.next();
+
 
         }
 
@@ -66,6 +66,7 @@ public class GraphClass implements DirectedWeightedGraph {
     public void addNode(NodeData n) {
         if (n != null) {
             this.NodesHashMap.put(n.getKey(), (Node) n);
+            mc++;
         }
 
     }
@@ -78,6 +79,7 @@ public class GraphClass implements DirectedWeightedGraph {
         this.NodesHashMap.get(src).getHashMap().put(dest, w);
 
         this.EdgesHashMap.put(s, e);
+
     }
 
     //this function checks if there is an edge between two nodes
@@ -166,12 +168,12 @@ public class GraphClass implements DirectedWeightedGraph {
 
     @Override
     public int nodeSize() {
-        return 0;
+        return this.NodesHashMap.size();
     }
 
     @Override
     public int edgeSize() {
-        return 0;
+        return this.EdgesHashMap.size();
     }
 
     @Override

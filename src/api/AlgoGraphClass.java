@@ -13,18 +13,20 @@ import java.util.*;
 
 public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
     GraphClass g;
-    private HashMap<Integer, Double> dist;
-    private HashMap<Integer, Integer> parent;
-    private HashMap<Integer, Boolean> visited;
-    private PriorityQueue<Node> nodePriorityQueue;
+    private HashMap<Integer, Double> dist;//save the shortest path to every node
+    private HashMap<Integer, Integer> parent;//save the parent of the node
+    private HashMap<Integer, Boolean> visited;//for dfs
+    private PriorityQueue<Node> nodePriorityQueue;//for dijkstra
     HashMap<Integer, Double> longestPath;
     Set p;
+    int update;
 
     @Override
     public void init(DirectedWeightedGraph g) {
         this.g = (GraphClass) g;
         this.dist = new HashMap<>();
         this.parent = new HashMap<>();
+        this.update = -1;
         Iterator<NodeData> iterator = this.g.nodeIter();
         while (iterator.hasNext()) {
             Node curr = (Node) iterator.next();
@@ -55,12 +57,14 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
     @Override
     public boolean isConnected() {
         setMyGraph(this.g);
-        dfs(0);
+        Iterator<NodeData> iterator = this.g.nodeIter();
+        dfs(iterator.next().getKey());
         if (visited.containsValue(false)) {
             return false;
         }
         setMyGraph(reverseDfs());
-        dfs(0);
+        Iterator<NodeData> iterator2 = this.g.nodeIter();
+        dfs(iterator2.next().getKey());
         if (visited.containsValue(false)) {
             return false;
         }
@@ -98,6 +102,7 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
     }
 
     public void setMyGraph(GraphClass c) {
+        this.visited = new HashMap<>();
         Iterator<NodeData> iterator = c.nodeIter();
         while (iterator.hasNext()) {
             Node curr = (Node) iterator.next();
@@ -155,9 +160,12 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
         if (this.g.getNode(dest) == null || this.g.getNode(src) == null) {
             return -1;
         }
-        Dijkstra(src);
-        return dist.get(dest);
-    }
+        if (update == 0||update ==-1) {
+            Dijkstra(src);
+        }
+            return dist.get(dest);
+        }
+
 
     //change that
     @Override
@@ -165,14 +173,23 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
         Dijkstra(src);
         List<NodeData> list = new LinkedList<>();
         int i = dest;
-        Node v = (Node) this.g.getNode(src);
-        list.add(v);
-        while ( parent.get(i) != -1) {
+        while ((int) parent.get(i) != -1) {
             Node n = (Node) this.g.getNode(i);
             list.add(n);
-            i = parent.get(i);
+            i = (int) parent.get(n.getKey());
         }
-        return list;
+        Node s = (Node) this.g.getNode(src);
+        list.add(s);
+        List<NodeData> ans = new LinkedList<>();
+        int j = list.size()-1;
+        while (j>=0) {
+            Node n = (Node) list.get(j);
+            ans.add(n);
+            j--;
+        }
+
+
+        return ans;
     }
 
 
@@ -186,14 +203,17 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
         Iterator<NodeData> iterator1 = this.g.nodeIter();
         while (iterator1.hasNext()) {
             Node i = (Node) iterator1.next();
+            update++;
             Iterator<NodeData> iterator2 = this.g.nodeIter();
             while (iterator2.hasNext()) {
                 Node j = (Node) iterator2.next();
                 double t = shortestPathDist(i.getKey(), j.getKey());
+                update++;
                 if (longestPath.get(i.getKey()) < t) {
                     longestPath.put(i.getKey(), t);
                 }
             }
+            update=-1;
         }
         Node n = (Node) this.g.getNode(returnMin(longestPath));
         return n;
@@ -217,8 +237,68 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
 
     @Override
     public List<NodeData> tsp(List<NodeData> cities) {
-        return null;
+        for (NodeData n : cities) {
+            Dijkstra(n.getKey());
+        }
+        double minValue = Double.POSITIVE_INFINITY;
+        List<NodeData> path = new ArrayList<>();
+        for (NodeData i : cities) {
+            List<NodeData> cur = new ArrayList();
+            double value;
+            value = GreedyPath(i, new ArrayList<>(cities), cur);
+            if (value < minValue) {
+                minValue = value;
+                path = cur;
+            }
+        }
+
+        return path;
     }
+    public double GreedyPath(NodeData i, List<NodeData> c, List<NodeData> v)
+    {
+        NodeData first = i;
+        v.add(i);
+        c.remove(i);
+        NodeData index = null;
+        double sum =0;
+
+        while(!c.isEmpty())
+        {
+            double min = Double.POSITIVE_INFINITY;
+            for (NodeData j:c) {
+                Dijkstra(i.getKey());
+                if(this.dist.get(j.getKey()) < min)
+                {
+                    min = this.dist.get(j.getKey());
+                    index = j;
+                }
+            }
+            sum+=min;
+            boolean f= true;
+            for (NodeData j:shortestPath(i.getKey(),index.getKey()))
+            {
+                if(f==true)
+                {
+                    f =false;
+                    continue;
+                }
+                v.add(j);
+            }
+            i = index;
+            c.remove(index);
+        }
+
+        v.add(first);
+        Dijkstra(i.getKey());
+        sum+= dist.get(first.getKey());
+//        for (NodeData n : ins) {
+//            System.out.print(n.getKey() + ",");
+//        }
+//        System.out.printf(" : " + sum);
+//        System.out.println();
+        return sum;
+    }
+
 
     @Override
     public boolean save(String file) {

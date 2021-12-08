@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 
 public class GraphPanel extends JPanel {
-    GraphClass c;
+    GraphClass graphClass;
     AlgoGraphClass a;
     private double minX;
     private double minY;
@@ -21,14 +21,14 @@ public class GraphPanel extends JPanel {
     private Dimension screenSize;
 
 
-    GraphPanel(GraphClass c) throws IOException {
+    GraphPanel(GraphClass graphClass) throws IOException {
         this.screenSize =Toolkit.getDefaultToolkit().getScreenSize();
 
         this.setPreferredSize(screenSize);
         this.setBackground(new Color(0x9FADBA));
         this.setFocusable(true);
-        this.c = c;
-        new AlgoGraphClass().setMyGraph(c);
+        this.graphClass = graphClass;
+        new AlgoGraphClass().setMyGraph(graphClass);
         System.out.println("start");
         setLimits();
 
@@ -38,7 +38,7 @@ public class GraphPanel extends JPanel {
 
     }
     private void setLimits(){
-        Iterator<NodeData> n = this.c.nodeIter();
+        Iterator<NodeData> n = this.graphClass.nodeIter();
         NodeData node;
         if(n.hasNext())
         {
@@ -66,10 +66,27 @@ public class GraphPanel extends JPanel {
     public void draw(Graphics g) {
         g.setFont(new Font("david", Font.BOLD, 14));
         g.drawString("Ofir Regev", 1200, 30);
-        g.drawString(String.valueOf("MC: "+this.c.getMC()),1200,50);
+        g.drawString(String.valueOf("MC: "+this.graphClass.getMC()),1200,50);
+        Iterator<EdgeData> iter2 = this.graphClass.edgeIter();
+        while (iter2.hasNext()) {
+            EdgeData edge = iter2.next();
 
+            double srcX = this.graphClass.getNode(edge.getSrc()).getLocation().x();
+            srcX = ((srcX - minX) * UX) + 12;
+            double srcY = this.graphClass.getNode(edge.getSrc()).getLocation().y();
+            srcY = ((srcY - minY) * UY) + 12;
 
-        Iterator<NodeData> iter = this.c.nodeIter();
+            double destX = this.graphClass.getNode(edge.getDest()).getLocation().x();
+            destX = ((destX - minX) * UX) + 12;
+            double destY = this.graphClass.getNode(edge.getDest()).getLocation().y();
+            destY = ((destY - minY) * UY) + 12;
+
+            g.setColor(Color.GRAY);
+            g.drawLine((int) srcX, (int) srcY, (int) destX, (int) destY);
+            drawArrowLine(g, (int) srcX, (int) srcY, (int) destX, (int) destY, 30, 7);
+
+        }
+        Iterator<NodeData> iter = this.graphClass.nodeIter();
         while (iter.hasNext()) {
             NodeData N = iter.next();
             // draw the node
@@ -80,31 +97,41 @@ public class GraphPanel extends JPanel {
             g.setColor(Color.WHITE);
             g.drawString("" + N.getKey(), x + 8, y + 15);
         }
-        Iterator<EdgeData> iter2 = this.c.edgeIter();
-        while (iter2.hasNext()) {
-            EdgeData edge = iter2.next();
 
-            double srcX = this.c.getNode(edge.getSrc()).getLocation().x();
-            srcX = ((srcX - minX) * UX) + 12;
-            double srcY = this.c.getNode(edge.getSrc()).getLocation().y();
-            srcY = ((srcY - minY) * UY) + 12;
-
-            double destX = this.c.getNode(edge.getDest()).getLocation().x();
-            destX = ((destX - minX) * UX) + 12;
-            double destY = this.c.getNode(edge.getDest()).getLocation().y();
-            destY = ((destY - minY) * UY) + 12;
-
-            g.setColor(Color.GRAY);
-            //g.drawLine((int)srcX, (int)srcY, (int)destX, (int)destY);
-            g.drawLine((int) srcX, (int) srcY, (int) destX, (int) destY);
-            //System.out.println(edge);
         }
+    private void drawArrowLine(Graphics g, int x1, int y1, int x2, int y2, int d, int h) {
+        int dx = x2 - x1, dy = y2 - y1;
+        double D = Math.sqrt(dx * dx + dy * dy);
+        double xm = D - d, xn = xm, ym = h, yn = -h, x;
+        double sin = dy / D, cos = dx / D;
+
+        x = xm * cos - ym * sin + x1;
+        ym = xm * sin + ym * cos + y1;
+        xm = x;
+
+        x = xn * cos - yn * sin + x1;
+        yn = xn * sin + yn * cos + y1;
+        xn = x;
+
+        int[] xpoints = {x2, (int) xm, (int) xn};
+        int[] ypoints = {y2, (int) ym, (int) yn};
+
+        g.drawLine(x1, y1, x2, y2);
+        g.fillPolygon(xpoints, ypoints, 3);
+    }
+
+    public void addNode(int key, int x, int y) {
+        double newX = (x-12)/UX + minX;
+        double newY = (y-12)/UY + minY;
+        this.graphClass.addNode(new Node(key,new GeoLocationClass(newX+","+newY+",0")));
+        repaint();
+    }
     }
 
 
 
 
-    }
+
 
 
 

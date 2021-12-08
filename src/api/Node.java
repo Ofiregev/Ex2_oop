@@ -3,6 +3,7 @@ package api;
 
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Node implements NodeData{
     private int id;
@@ -32,6 +33,15 @@ public class Node implements NodeData{
     public Node(int id, double weight) {
         this.id = id;
         this.weight = weight;
+    }
+
+    public Node(int i) {
+        Random r = new Random();
+        String t=String.valueOf(r.nextInt());
+        this.id = i;
+        this.location = new GeoLocationClass("0,0,0");
+        this.edge_hash_Map = new HashMap<>();
+
     }
 
 
