@@ -3,12 +3,8 @@ package GUI;
 import api.*;
 
 
-import org.w3c.dom.traversal.NodeIterator;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -32,7 +28,7 @@ public class GraphPanel extends JPanel {
         this.setBackground(new Color(0x9FADBA));
         this.setFocusable(true);
         this.c = c;
-        new AlgoGraphClass().init(c);
+        new AlgoGraphClass().setMyGraph(c);
         System.out.println("start");
         setLimits();
 

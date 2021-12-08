@@ -18,12 +18,11 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
     private HashMap<Integer, Boolean> visited;
     private PriorityQueue<Node> nodePriorityQueue;
     HashMap<Integer, Double> longestPath;
-    Set p ;
+    Set p;
 
     @Override
     public void init(DirectedWeightedGraph g) {
         this.g = (GraphClass) g;
-        System.out.println(g);
         this.dist = new HashMap<>();
         this.parent = new HashMap<>();
         Iterator<NodeData> iterator = this.g.nodeIter();
@@ -55,30 +54,16 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
 
     @Override
     public boolean isConnected() {
-        init(this.g);
+        setMyGraph(this.g);
         dfs(0);
-        if(visited.values().contains(false)){
+        if (visited.containsValue(false)) {
             return false;
         }
-//        Iterator iterator = this.visited.entrySet().iterator();
-//        while (iterator.hasNext()) {
-//            if (visited.values().contains(false)) {
-//                return false;
-//            }
-//            iterator.next();
-//        }
-        init(reverseDfs());
+        setMyGraph(reverseDfs());
         dfs(0);
-        if(visited.values().contains(false)){
+        if (visited.containsValue(false)) {
             return false;
         }
-//        Iterator iterator2 = this.visited.entrySet().iterator();
-//        while (iterator2.hasNext()) {
-//            if (visited.containsKey(false)) {
-//                return false;
-//            }
-//            iterator2.next();
-//        }
 
         return true;
     }
@@ -112,7 +97,7 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
         return graphClass;
     }
 
-    public void init(GraphClass c) {
+    public void setMyGraph(GraphClass c) {
         Iterator<NodeData> iterator = c.nodeIter();
         while (iterator.hasNext()) {
             Node curr = (Node) iterator.next();
@@ -152,7 +137,6 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
                 relax(v, t);
 
 
-
             }
         }
     }
@@ -183,10 +167,10 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
         int i = dest;
         Node v = (Node) this.g.getNode(src);
         list.add(v);
-        while ((int) parent.get(i) != -1) {
+        while ( parent.get(i) != -1) {
             Node n = (Node) this.g.getNode(i);
             list.add(n);
-            i = (int) parent.get(i);
+            i = parent.get(i);
         }
         return list;
     }

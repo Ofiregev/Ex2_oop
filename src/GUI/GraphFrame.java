@@ -1,16 +1,13 @@
 package GUI;
 import api.AlgoGraphClass;
 import api.GraphClass;
-import api.GraphClass;
 
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.util.Locale;
 
 public class GraphFrame extends JFrame  implements ActionListener{
     GraphPanel c;
@@ -20,7 +17,7 @@ public class GraphFrame extends JFrame  implements ActionListener{
 
         this.c =new GraphPanel(c);
         this.a = new AlgoGraphClass();
-        this.a.init(c);
+        this.a.setMyGraph(c);
 
         this.add(this.c);
         this.setTitle("My Graph");

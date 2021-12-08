@@ -46,7 +46,7 @@ class Point3D implements Serializable
             _z = Double.parseDouble(a[2]);
         }
         catch(IllegalArgumentException e) {
-            System.err.println("ERR: got wrong format string for POint3D init, got:"+s+"  should be of format: x,y,x");
+            System.err.println("ERR: got wrong format string for POint3D setMyGraph, got:"+s+"  should be of format: x,y,x");
             throw(e);
         }
     }
