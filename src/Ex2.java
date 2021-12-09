@@ -23,7 +23,7 @@ public class Ex2 {
      */
     public static DirectedWeightedGraph getGrapg(String json_file) throws IOException {
 
-        DirectedWeightedGraph ans;
+        DirectedWeightedGraph ans ;
         AlgoGraphClass algoGraphClass = new AlgoGraphClass();
         algoGraphClass.load(json_file);
         ans = algoGraphClass.getGraph();
@@ -59,6 +59,7 @@ public class Ex2 {
         Scanner file = new Scanner(args[0]);
         getGrapgAlgo(String.valueOf(file));
         runGUI(String.valueOf(file));
+
 
 
     }
