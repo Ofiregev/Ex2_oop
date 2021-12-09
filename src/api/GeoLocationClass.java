@@ -10,21 +10,24 @@ public class GeoLocationClass implements GeoLocation {
     public GeoLocationClass(String location) {
         this.location = location;
         this.s = location.split(",");
+        this.x = Double.parseDouble(s[0]);
+        this.y = Double.parseDouble(s[1]);
+        this.z = Double.parseDouble(s[2]);
     }
 
     @Override
     public double x() {
-        return Double.parseDouble(s[0]);
+        return this.x;
     }
 
     @Override
     public double y() {
-        return Double.parseDouble(s[1]);
+        return this.y;
     }
 
     @Override
     public double z() {
-        return Double.parseDouble(s[2]);
+        return this.z;
     }
 
     @Override

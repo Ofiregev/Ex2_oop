@@ -17,9 +17,9 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
     private HashMap<Integer, Integer> parent;//save the parent of the node
     private HashMap<Integer, Boolean> visited;//for dfs
     private PriorityQueue<Node> nodePriorityQueue;//for dijkstra
-    HashMap<Integer, Double> longestPath;
-    Set p;
-    int update;
+    private HashMap<Integer, Double> longestPath;
+    private Set p;
+    private int update;
 
     @Override
     public void init(DirectedWeightedGraph g) {
@@ -167,7 +167,6 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
         }
 
 
-    //change that
     @Override
     public List<NodeData> shortestPath(int src, int dest) {
         Dijkstra(src);

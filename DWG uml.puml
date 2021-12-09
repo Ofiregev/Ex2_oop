@@ -1,0 +1,180 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface DirectedWeightedGraph
+interface DirectedWeightedGraphAlgorithms
+interface EdgeData
+interface GeoLocation
+interface NodeData
+
+interface Iterator
+interface Comparator
+
+class Ex2
+class GraphClass
+class AlgoGraphClass
+class Edge
+class Node
+class Node_comp
+class GeoLocationClass
+class GraphFrame
+class GraphPanel
+class nodeIterator
+class EdgeIterator
+class Jframe
+class Jpanel
+
+Ex2...>AlgoGraphClass
+Ex2..>GraphClass
+
+Ex2...>GraphFrame
+GraphFrame ...>GraphPanel
+
+
+
+DirectedWeightedGraph <|--- GraphClass
+DirectedWeightedGraphAlgorithms <|--- AlgoGraphClass
+GeoLocation <|--- GeoLocationClass
+NodeData <|--- Node
+EdgeData <|--- Edge
+Iterator <|---nodeIterator
+Iterator <|--- EdgeIterator
+Comparator <|--- Node_comp
+
+GraphFrame ...>Jframe
+GraphPanel ...> Jpanel
+
+AlgoGraphClass ...> GraphClass
+AlgoGraphClass ...>Node_comp
+Node ...>GeoLocationClass
+
+GraphClass ...> Node
+GraphClass ...> Edge
+GraphClass ...>nodeIterator
+GraphClass ...>EdgeIterator
+GraphFrame ...>AlgoGraphClass
+
+
+class Ex2{
+main class
+}
+
+class GraphClass{
+HashMap<Integer, Node> NodesHashMap
+ HashMap<String, Edge> EdgesHashMap
+ int mc = 0
++getNode (int key)
++getEdge (int src, int dest)
++addNode (NodeData n)
++connect (int src, int dest, double w)
++nodeIter()
++edgeIter()
++edgeIter(int node_id)
++removeNode(int key)
++removeEdge(int src, int dest)
++nodeSize()
++edgeSize()
++getMC()
+
+
+*getNodesHashMap()
+*getEdgesHashMap()
+*hasEdge (int src, int dst)
+*getWeightBySrc (int src, int dst)
+*getEdgeBySrc (int src)
+
+}
+class AlgoGraphClass{
+GraphClass g
+HashMap<Integer, Double> dist
+HashMap<Integer, Integer> parent
+HashMap<Integer, Boolean> visited
+PriorityQueue<Node> nodePriorityQueue
+HashMap<Integer, Double> longestPath
+Set p
+int update
+
++init (DirectedWeightedGraph g)
++getGraph()
++copy()
++isConnected()
++shortestPathDist(int src, int dest)
++shortestPath(int src, int dest)
++center()
++tsp(List<NodeData> cities)
++save(String file)
++load(String file)
+*dfs (int src)
+*reverseDfs()
+*setMyGraph (GraphClass c)
+*Dijkstra (int src)
+*relax (int src, int dest)
+*returnMin (HashMap hashMap)
+*GreedyPath(NodeData i, List<NodeData> c, List<NodeData> v)
+}
+class nodeIterator{
+private class
+}
+class EdgeIterator{
+private class
+}
+class Node{
+int id
+GeoLocationClass location
+HashMap<Integer, Double> edge_hash_Map
+double weight
+
++getKey()
++getLocation()
++getWeight()
++setWeight(double w)
++getInfo()
++setInfo(String s)
++getTag()
++setTag(int t)
+*setLocation()
+*getHashMap()
+*toString()
+
+}
+class Edge{
+int src
+int dst
+double weight
++getSrc()
++getDest()
++getWeight()
++getInfo()
++setInfo()
++getTag()
++setTag()
+}
+class GeoLocationClass{
+String location
+String[] s
+
++x()
++y()
++z()
++distance(GeoLocation g)
+*toString()
+
+
+
+
+}
+class Node_comp{
++compare (Node n1, Node n2)
+}
+
+
+interface Iterator{
+<NodeData>
+<EdgeData>
+}
+
+
+
+
+
+@enduml

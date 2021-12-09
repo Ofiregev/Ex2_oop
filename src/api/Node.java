@@ -34,7 +34,7 @@ public class Node implements NodeData{
         this.id = id;
         this.weight = weight;
     }
-
+    //for tests
     public Node(int i) {
         Random r = new Random();
         String t=String.valueOf(r.nextInt());
