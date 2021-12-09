@@ -1,4 +1,6 @@
-#Ex2 
+# Ex2
+
+
 @auther Ofir Regev
 
 *introduction*
@@ -23,13 +25,14 @@ Also, for few of the algorithms implementations i assisted GeeksForGeeks and Sta
 https://www.geeksforgeeks.org/
 https://stackoverflow.com/
 
+
 *UML of the classes in the project*
 
 ![img_2.png](img_2.png)
 
 This uml represent the interfaces and the class of the project.
 The regular arrow means that this class implement the interface below.
-The green points means function from the interface, and the black points means that this is a function that added by me for the project (Explanations about those function will come next).
+The green points means function from the interface, and the black points means that this is a function that added by me for the project.
 The dashed line means that this class depends on the other class.
 
 *Explenation on the classes and the interfaces*
