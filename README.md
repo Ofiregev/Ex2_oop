@@ -6,7 +6,7 @@
 *introduction*
 
 This project is about directed weighted graphs.
-Weighted directed graphs are (simple) directed graphs with weights assigned to their arrows.
+Directed weighted graphs are (simple) directed graphs with weights assigned to their arrows.
 
 We asked to implement interfaces of directed weighted graphs and of directed weighted graphs algorithms, and to represent the graphs by GUI presentation.
 
@@ -14,7 +14,7 @@ The graph needs to be load from a json file, I used json_simple.jar library.
 
 
 
-*Project Material*
+*Project Materials*
 
 For understanding all the problem space i assisted the videos of William Fiset and wikipedia:
 
@@ -32,11 +32,11 @@ https://stackoverflow.com/
 
 ![img_2.png](img_2.png)
 
-This uml represent the interfaces and the class of the project.
+This uml represent the interfaces and the classes of the project.
 
 The regular arrow means that this class implement the interface below.
 
-The green points means function from the interface, and the black points means that this is a function that added by me for the project.
+The green points means functions from the interface, and the black points means that this is a function that added by me for the project.
 
 The dashed line means that this class depends on the other class.
 
@@ -46,7 +46,7 @@ The dashed line means that this class depends on the other class.
 
 Above all there is the Ex2 class, which is the main class of the project.
 
-Ex2 get json file and crate a graph, this graph implements by the algorithms graph, and the function og the GUI create GUI presentation of this algorithms graph.
+Ex2 get json file and create a graph, this graph implements by the algorithms graph, and the function runGui create GUI presentation of this algorithms graph.
 
 -GraphClass-
 
@@ -243,6 +243,29 @@ center = 3347 ms
 shortest path (1,999) = 2 ms
 
 I couldn't run the program for the bigger graphs because of the size of the file.
+
+*How to open the jar file*
+    
+    
+-download the jar file from the github
+    
+-open new java project
+    
+-add to the src pacage the jar file
+    
+-add the files which you want to load
+    
+-open a new terminal fron the jar file, like that:
+<img width="443" alt="image" src="https://user-images.githubusercontent.com/92684730/145417179-c09d19f0-c037-4882-b374-7350e5858e36.png">
+    
+    
+    
+-write this :java -jar Ex2.jar filename.json in the terminal
+    
+-press enter
+    
+ -enjoy (:
+
 
 
 
