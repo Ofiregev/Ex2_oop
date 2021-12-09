@@ -24,8 +24,8 @@ https://www.geeksforgeeks.org/
 https://stackoverflow.com/
 
 *UML of the classes in the project*
-//not update
-![img.png](img.png)
+
+![img_2.png](img_2.png)
 
 This uml represent the interfaces and the class of the project.
 The regular arrow means that this class implement the interface below.
