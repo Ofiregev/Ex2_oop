@@ -244,6 +244,26 @@ shortest path (1,999) = 2 ms
 
 I couldn't run the program for the bigger graphs because of the size of the file.
 
+*How to open the jar file*
+    
+-open new java project
+    
+-add to the src pacage the jar file
+    
+-add the files which you want to load
+    
+-open a new terminal fron the jar file, like that:
+<img width="443" alt="image" src="https://user-images.githubusercontent.com/92684730/145417179-c09d19f0-c037-4882-b374-7350e5858e36.png">
+    
+    
+    
+-write this :java -jar Ex2.jar filename.json in the terminal
+    
+-press enter
+    
+ -enjoy (:
+
+
 
 
 
