@@ -123,6 +123,8 @@ public int edgeSize();
       
   public int getMC();
 
+----end of the interface---
+
 
 
 I chose to implement the graph data structure by two hash maps, one save nodes by their id (each node have his own hash map that saves the destination of the edge that get from it and the edge weight).
@@ -204,6 +206,9 @@ public boolean save(String file);
      * @return true - iff the graph was successfully loaded.
      
 public boolean load(String file);
+
+----end of the interface---
+
 
 Because of the fact that i needed to use many algorithms to implements this class i assisted many data structure.
 GraphClass g - The graph which the algorithms in this class are run on.
