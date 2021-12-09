@@ -246,6 +246,9 @@ I couldn't run the program for the bigger graphs because of the size of the file
 
 *How to open the jar file*
     
+    
+-download the jar file from the github
+    
 -open new java project
     
 -add to the src pacage the jar file
