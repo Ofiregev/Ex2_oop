@@ -237,7 +237,12 @@ Set p - for the Dijkstra function.
 int update - for the shortestPathDist function.
 
 
+Running time for 1000 nodes graph
+is connected = 6 ms
+center = 3347 ms
+shortest path (1,999) = 2 ms
 
+I couldn't run the program for the bigger graphs because of the size of the file.
 
 
 
