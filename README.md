@@ -1,12 +1,16 @@
-#Ex2 
+# Ex2
+
+
 @auther Ofir Regev
 
 *introduction*
 
 This project is about directed weighted graphs.
 Weighted directed graphs are (simple) directed graphs with weights assigned to their arrows.
+
 We asked to implement interfaces of directed weighted graphs and of directed weighted graphs algorithms, and to represent the graphs by GUI presentation.
-The graph needs to be load from a json file, i used json_simple.jar library.
+
+The graph needs to be load from a json file, I used json_simple.jar library.
 
 
 
@@ -23,13 +27,17 @@ Also, for few of the algorithms implementations i assisted GeeksForGeeks and Sta
 https://www.geeksforgeeks.org/
 https://stackoverflow.com/
 
+
 *UML of the classes in the project*
 
 ![img_2.png](img_2.png)
 
 This uml represent the interfaces and the class of the project.
+
 The regular arrow means that this class implement the interface below.
-The green points means function from the interface, and the black points means that this is a function that added by me for the project (Explanations about those function will come next).
+
+The green points means function from the interface, and the black points means that this is a function that added by me for the project.
+
 The dashed line means that this class depends on the other class.
 
 *Explenation on the classes and the interfaces*
@@ -37,6 +45,7 @@ The dashed line means that this class depends on the other class.
 -Ex2-
 
 Above all there is the Ex2 class, which is the main class of the project.
+
 Ex2 get json file and crate a graph, this graph implements by the algorithms graph, and the function og the GUI create GUI presentation of this algorithms graph.
 
 -GraphClass-
@@ -212,16 +221,28 @@ public boolean load(String file);
 
 Because of the fact that i needed to use many algorithms to implements this class i assisted many data structure.
 GraphClass g - The graph which the algorithms in this class are run on.
+    
 HashMap<Integer, Double> dist - saving the shortest path for every node in the graph.
+    
 HashMap<Integer, Integer> parent - saving the last node that pointed to the node, this hash map is for the shortestPath function.
+    
 HashMap<Integer, Boolean> visited - saving the data about the node processing (true if it already processed else false), this hash map is mainly for the isConnected function.
+    
 PriorityQueue<Node> nodePriorityQueue - for the Dijkstra function, return every time the node with the minimal weight.
+    
 HashMap<Integer, Double> longestPath - saving the longest path of each node, this hash map is for the center function.
+    
 Set p - for the Dijkstra function.
+    
 int update - for the shortestPathDist function.
 
 
+Running time for 1000 nodes graph
+is connected = 6 ms
+center = 3347 ms
+shortest path (1,999) = 2 ms
 
+I couldn't run the program for the bigger graphs because of the size of the file.
 
 
 
