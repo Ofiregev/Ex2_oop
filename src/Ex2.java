@@ -4,6 +4,12 @@ import api.DirectedWeightedGraphAlgorithms;
 import api.*;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.Scanner;
+import java.io.File;
 
 /**
  * This class is the main class for Ex2 - your implementation will be tested using this class.
@@ -20,7 +26,6 @@ public class Ex2 {
         DirectedWeightedGraph ans;
         AlgoGraphClass algoGraphClass = new AlgoGraphClass();
         algoGraphClass.load(json_file);
-        System.out.println(algoGraphClass.save("C:\\Users\\avi44\\OneDrive\\מסמכים\\GitHub\\Ex2_oop\\saved1.json"));
         ans = algoGraphClass.getGraph();
 
 
@@ -37,11 +42,6 @@ public class Ex2 {
         DirectedWeightedGraphAlgorithms ans = new AlgoGraphClass();
         ans.init(getGrapg(json_file));
 
-        System.out.println(ans.center());
-        ans.shortestPathDist(1,10);
-
-
-
         return ans;
     }
 
@@ -51,16 +51,14 @@ public class Ex2 {
      * @param json_file - a json file (e.g., G1.json - G3.gson)
      */
     public static void runGUI(String json_file) throws IOException {
-//        DirectedWeightedGraphAlgorithms alg = getGrapgAlgo(json_file);
         new GraphFrame((GraphClass) getGrapg(json_file));
 
     }
 
     public static void main(String[] args) throws IOException {
-//        String file = args[0];
-       String filename = "C:\\Users\\avi44\\IdeaProjects\\Ex2_06_12\\src\\data\\G3.json";
-        getGrapgAlgo(filename);
-        runGUI(filename);
+        Scanner file = new Scanner(args[0]);
+        getGrapgAlgo(String.valueOf(file));
+        runGUI(String.valueOf(file));
 
 
     }

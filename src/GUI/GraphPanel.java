@@ -28,7 +28,7 @@ public class GraphPanel extends JPanel {
         this.setBackground(new Color(0x9FADBA));
         this.setFocusable(true);
         this.graphClass = graphClass;
-        new AlgoGraphClass().setMyGraph(graphClass);
+        new AlgoGraphClass().init(graphClass);
         System.out.println("start");
         setLimits();
 
@@ -125,6 +125,7 @@ public class GraphPanel extends JPanel {
         double newY = (y-12)/UY + minY;
         this.graphClass.addNode(new Node(key,new GeoLocationClass(newX+","+newY+",0")));
         repaint();
+        revalidate();
     }
     }
 

@@ -47,10 +47,11 @@ public class GraphClass implements DirectedWeightedGraph {
 
     @Override
     public EdgeData getEdge(int src, int dest) {
-        if (this.NodesHashMap.get(src).getHashMap() == null) {
+        String s=src +","+dest;
+        if(EdgesHashMap.get(s)==null){
             return null;
         } else {
-            return new Edge(src, dest, (Double) this.NodesHashMap.get(src).getHashMap().get(dest));
+            return EdgesHashMap.get(s);
         }
     }
 

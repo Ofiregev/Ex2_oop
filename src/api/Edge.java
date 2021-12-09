@@ -53,4 +53,7 @@ public class Edge implements EdgeData{
     public void setTag(int t) {
 
     }
+    public String toString(){
+        return "Edge:" +"("+this.src+"," +this.dst+")"+ " weight: " + this.weight;
+    }
 }
