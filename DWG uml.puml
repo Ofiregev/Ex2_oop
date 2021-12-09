@@ -172,6 +172,12 @@ interface Iterator{
 <NodeData>
 <EdgeData>
 }
+class Ex2{
+getGraph(String json_file)
+getGraphAlgo (String json_file)
+runGUI (String json_file)
+
+}
 
 
 
