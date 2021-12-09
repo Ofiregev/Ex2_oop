@@ -57,9 +57,8 @@ public class Ex2 {
     }
 
     public static void main(String[] args) throws IOException {
-
-
-        String filename = "C:\\Users\\avi44\\IdeaProjects\\Ex2_06_12\\src\\data\\G1.json";
+//        String file = args[0];
+       String filename = "C:\\Users\\avi44\\IdeaProjects\\Ex2_06_12\\src\\data\\G1.json";
         getGrapgAlgo(filename);
         runGUI(filename);
 
