@@ -30,23 +30,23 @@ https://stackoverflow.com/
 
 *UML of the classes in the project*
 
-![img_2.png](img_2.png)
+![img_3.png](img_3.png)
 
-This uml represent the interfaces and the classes of the project.
-
-The regular arrow means that this class implement the interface below.
+This uml represent the main classes in the project, every class (except Ex2) implement interface that has been given as part of the assignment.
 
 The green points means functions from the interface, and the black points means that this is a function that added by me for the project.
 
 The dashed line means that this class depends on the other class.
 
-*Explenation on the classes and the interfaces*
+*Explanation on the classes and the interfaces*
 
 -Ex2-
 
 Above all there is the Ex2 class, which is the main class of the project.
 
 Ex2 get json file and create a graph, this graph implements by the algorithms graph, and the function runGui create GUI presentation of this algorithms graph.
+
+In the GUI presentation yoe can create new graphs and run the algorithms on.
 
 -GraphClass-
 
@@ -84,15 +84,15 @@ public void addNode(NodeData n);
     * collection representing all the nodes in the graph.
     * Note: if the graph was changed since the iterator was constructed - a RuntimeException should be thrown.
     * @return Iterator<node_data>
-      */
-      public Iterator<NodeData> nodeIter();
-      /**
+
+public Iterator<NodeData> nodeIter();
+      
     * This method returns an Iterator for all the edges in this graph.
     * Note: if any of the edges going out of this node were changed since the iterator was constructed - a RuntimeException should be thrown.
     * @return Iterator<EdgeData>
-      */
-      public Iterator<EdgeData> edgeIter();
-      /**
+     
+public Iterator<EdgeData> edgeIter();
+      
     * This method returns an Iterator for edges getting out of the given node (all the edges starting (source) at the given node).
     * Note: if the graph was changed since the iterator was constructed - a RuntimeException should be thrown.
     * @return Iterator<EdgeData>
@@ -115,9 +115,10 @@ public NodeData removeNode(int key);
     * @return the data of the removed edge (null if none).
      
 public EdgeData removeEdge(int src, int dest);
-    Returns the number of vertices (nodes) in the graph.
-    * Note: this method should run in O(1) time.
-    * @return
+
+     *Returns the number of vertices (nodes) in the graph.
+     * Note: this method should run in O(1) time.
+     * @return
       
 public int nodeSize();
       
@@ -130,9 +131,9 @@ public int edgeSize();
     * Returns the Mode Count - for testing changes in the graph.
     * @return
       
-  public int getMC();
+public int getMC();
 
-----end of the interface---
+----------------------------------------------------------------------------end of the interface-------------------------------------------------------------------------------------------------------
 
 
 
@@ -216,7 +217,7 @@ public boolean save(String file);
      
 public boolean load(String file);
 
-----end of the interface---
+----------------------------------------------------------------------------end of the interface-------------------------------------------------------------------------------------------------------
 
 
 Because of the fact that i needed to use many algorithms to implements this class i assisted many data structure.

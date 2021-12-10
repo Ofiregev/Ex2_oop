@@ -1,58 +1,59 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-interface DirectedWeightedGraph
-interface DirectedWeightedGraphAlgorithms
-interface EdgeData
-interface GeoLocation
-interface NodeData
+'interface DirectedWeightedGraph
+'interface DirectedWeightedGraphAlgorithms
+'interface EdgeData
+'interface GeoLocation
+'interface NodeData
 
-interface Iterator
-interface Comparator
+'interface Iterator
+'interface Comparator
 
 class Ex2
 class GraphClass
 class AlgoGraphClass
 class Edge
 class Node
-class Node_comp
+'class Node_comp
 class GeoLocationClass
-class GraphFrame
-class GraphPanel
-class nodeIterator
-class EdgeIterator
-class Jframe
-class Jpanel
+'class GraphFrame
+'class GraphPanel
+'class nodeIterator
+'class EdgeIterator
+'class Jframe
+'class Jpanel
 
-Ex2...>AlgoGraphClass
 Ex2..>GraphClass
 
-Ex2...>GraphFrame
-GraphFrame ...>GraphPanel
+Ex2..>AlgoGraphClass
+'
+'Ex2...>GraphFrame
+'GraphFrame ...>GraphPanel
 
 
+'
+'DirectedWeightedGraph <|--- GraphClass
+'DirectedWeightedGraphAlgorithms <|--- AlgoGraphClass
+'GeoLocation <|--- GeoLocationClass
+'NodeData <|--- Node
+'EdgeData <|--- Edge
+'Iterator <|---nodeIterator
+'Iterator <|--- EdgeIterator
+'Comparator <|--- Node_comp
+'
+'GraphFrame ...>Jframe
+'GraphPanel ...> Jpanel
+GraphClass <.. AlgoGraphClass
+'AlgoGraphClass ......> GraphClass
+'AlgoGraphClass ...>Node_comp
+Node ..>GeoLocationClass
 
-DirectedWeightedGraph <|--- GraphClass
-DirectedWeightedGraphAlgorithms <|--- AlgoGraphClass
-GeoLocation <|--- GeoLocationClass
-NodeData <|--- Node
-EdgeData <|--- Edge
-Iterator <|---nodeIterator
-Iterator <|--- EdgeIterator
-Comparator <|--- Node_comp
-
-GraphFrame ...>Jframe
-GraphPanel ...> Jpanel
-
-AlgoGraphClass ...> GraphClass
-AlgoGraphClass ...>Node_comp
-Node ...>GeoLocationClass
-
-GraphClass ...> Node
-GraphClass ...> Edge
-GraphClass ...>nodeIterator
-GraphClass ...>EdgeIterator
-GraphFrame ...>AlgoGraphClass
+GraphClass .> Node
+GraphClass .> Edge
+'GraphClass ...>nodeIterator
+'GraphClass ...>EdgeIterator
+'GraphFrame ...>AlgoGraphClass
 
 
 class Ex2{
@@ -60,6 +61,8 @@ main class
 }
 
 class GraphClass{
+-implements DirectedWeightedGraph interface
+
 HashMap<Integer, Node> NodesHashMap
  HashMap<String, Edge> EdgesHashMap
  int mc = 0
@@ -85,6 +88,8 @@ HashMap<Integer, Node> NodesHashMap
 
 }
 class AlgoGraphClass{
+-implements DirectedWeightedGraphAlgorithms interface
+
 GraphClass g
 HashMap<Integer, Double> dist
 HashMap<Integer, Integer> parent
@@ -112,13 +117,15 @@ int update
 *returnMin (HashMap hashMap)
 *GreedyPath(NodeData i, List<NodeData> c, List<NodeData> v)
 }
-class nodeIterator{
-private class
-}
-class EdgeIterator{
-private class
-}
+'class nodeIterator{
+'private class
+'}
+'class EdgeIterator{
+'private class
+'}
 class Node{
+-implements NodeData interface
+
 int id
 GeoLocationClass location
 HashMap<Integer, Double> edge_hash_Map
@@ -138,6 +145,8 @@ double weight
 
 }
 class Edge{
+-implements EdgeData interface
+
 int src
 int dst
 double weight
@@ -150,6 +159,8 @@ double weight
 +setTag()
 }
 class GeoLocationClass{
+-implements GraphClass interface
+
 String location
 String[] s
 
@@ -158,20 +169,20 @@ String[] s
 +z()
 +distance(GeoLocation g)
 *toString()
-
-
-
-
-}
-class Node_comp{
-+compare (Node n1, Node n2)
 }
 
 
-interface Iterator{
-<NodeData>
-<EdgeData>
-}
+
+'}
+'class Node_comp{
+'+compare (Node n1, Node n2)
+'}
+'
+'
+'interface Iterator{
+'<NodeData>
+'<EdgeData>
+'}
 class Ex2{
 getGraph(String json_file)
 getGraphAlgo (String json_file)
