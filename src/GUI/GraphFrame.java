@@ -29,6 +29,7 @@ public class GraphFrame extends JFrame implements ActionListener {
     JMenuItem removeNode;
     JMenuItem remove;
     JMenuItem addNode;
+    JMenuItem addEdge;
     JMenuItem removeEdge;
     JMenuItem nodeSize;
     JMenuItem edgeSize;
@@ -58,6 +59,8 @@ public class GraphFrame extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         this.setLayout(new FlowLayout());
+        this.menuBar=new JMenuBar();
+        this.loadIcon=new ImageIcon();
 
         this.exitIcon = new ImageIcon("./ImageIcon/EXIT.png");
         this.loadIcon = new ImageIcon("./ImageIcon/img.png");
@@ -102,6 +105,7 @@ public class GraphFrame extends JFrame implements ActionListener {
 
 
         addNode = new JMenuItem("add node");
+        addEdge=new JMenuItem("addEdge");
         nodeSize = new JMenuItem("get nodes size");
         edgeSize = new JMenuItem("get edges size");
 
@@ -117,6 +121,7 @@ public class GraphFrame extends JFrame implements ActionListener {
         /* */
         remove.addActionListener(this);
         addNode.addActionListener(this);
+        addEdge.addActionListener(this);
         removeEdge.addActionListener(this);
         nodeSize.addActionListener(this);
         edgeSize.addActionListener(this);
@@ -129,12 +134,13 @@ public class GraphFrame extends JFrame implements ActionListener {
         this.removeEdge.setIcon(this.DGraphIcon);
         this.removeNode.setIcon(this.DGraphIcon);
         this.addNode.setIcon(this.addGraphIcon);
+        this.addEdge.setIcon(this.addGraphIcon);
         this.getEdge.setIcon(this.loadIcon);
         this.getNode.setIcon(this.loadIcon);
 
 
         GraphMenu.add(loadGraph);
-        GraphMenu.add(newFile);
+        //GraphMenu.add(newFile);
         GraphMenu.add(saveGraph);
         GraphMenu.add(removeNode);
         GraphMenu.add(removeEdge);
@@ -143,6 +149,7 @@ public class GraphFrame extends JFrame implements ActionListener {
         GraphMenu.add(getEdge);
 
         GraphMenu.add(addNode);
+        GraphMenu.add(addEdge);
         GraphMenu.add(nodeSize);
         GraphMenu.add(edgeSize);
         algorithms.add(center);
@@ -293,7 +300,32 @@ public class GraphFrame extends JFrame implements ActionListener {
             System.out.println("done");
 
 
-        } else if (e.getSource() == removeEdge) {
+        }
+
+        else if (e.getSource() == addEdge) {
+
+            this.remove(this.c);
+            GraphClass temp = this.c.graphClass;
+            //this.add(w);
+            String src = JOptionPane.showInputDialog("please enter the location of the src");
+            String w = JOptionPane.showInputDialog("please enter the id of the w");
+            String dest = JOptionPane.showInputDialog("please enter the location of the dest");
+            String bla = w + "," + dest + ",0.0";
+            temp.connect(Integer.parseInt(src),Integer.parseInt(dest),Integer.parseInt(w));
+            //temp.addNode(new Node(Integer.parseInt(src), new GeoLocationClass(bla)));
+            try {
+                this.c = new GraphPanel(temp);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            this.add(c);
+            this.repaint();
+            this.revalidate();
+            System.out.println("done");
+
+
+        }
+        else if (e.getSource() == removeEdge) {
             String remove = JOptionPane.showInputDialog("please enter the edge (like this : '1,8' )");
             String[] s = remove.split(",");
             this.a.getGraph().removeEdge(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
@@ -330,14 +362,20 @@ public class GraphFrame extends JFrame implements ActionListener {
             String node = JOptionPane.showInputDialog("please enter the id of the node");
             String s = this.a.getGraph().getNode(Integer.parseInt(node)).toString();
             JOptionPane.showMessageDialog(null, s, "get node", JOptionPane.DEFAULT_OPTION);
-        } else if ((e.getSource() == getEdge)) {
-            String edge = JOptionPane.showInputDialog("please enter the edge (like this : '1,8')");
+        } else if ((e.getSource() == getEdge))
+        {
+            String edge = JOptionPane.showInputDialog("please enter the edge (like this : ' 1,8 ')");
             String[] w = edge.split(",");
             Edge q = (Edge) this.a.getGraph().getEdge(Integer.parseInt(w[0]), Integer.parseInt(w[1]));
-            while (q == null) {
-                edge = JOptionPane.showInputDialog("please enter a valid edge (like this : '1,8')");
+            this.repaint();
+            this.revalidate();
+            j=0;
+            while (q == null &&j<3)
+            {
+                edge = JOptionPane.showInputDialog( "Try again,this is the experience " +j+ " please enter a valid edge (like this : '1,8')"+"You have "+(3-j));
                 w = edge.split(",");
                 q = (Edge) this.a.getGraph().getEdge(Integer.parseInt(w[0]), Integer.parseInt(w[1]));
+                j++;
             }
             String s = q.toString();
             JOptionPane.showMessageDialog(null, s, "get Edge", JOptionPane.DEFAULT_OPTION);
