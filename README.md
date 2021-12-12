@@ -1,7 +1,7 @@
 # Ex2
 
 
-@auther Ofir Regev
+@auther Ofir Regev and Ofek Avi Saadon
 
 *introduction*
 
@@ -10,20 +10,20 @@ Directed weighted graphs are (simple) directed graphs with weights assigned to t
 
 We asked to implement interfaces of directed weighted graphs and of directed weighted graphs algorithms, and to represent the graphs by GUI presentation.
 
-The graph needs to be load from a json file, I used json_simple.jar library.
+The graph needs to be load from a json file, we used json_simple.jar library.
 
 
 
 *Project Materials*
 
-For understanding all the problem space i assisted the videos of William Fiset and wikipedia:
+For understanding all the problem space we assisted the videos of William Fiset and wikipedia:
 
 https://www.youtube.com/channel/UCD8yeTczadqdARzQUp29PJw
 https://en.wikipedia.org/wiki/Directed_graph
 https://en.wikipedia.org/wiki/Graph_center
 https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
-Also, for few of the algorithms implementations i assisted GeeksForGeeks and StackOverFlow forums.
+Also, for few of the algorithms implementations we assisted GeeksForGeeks and StackOverFlow forums.
 https://www.geeksforgeeks.org/
 https://stackoverflow.com/
 
@@ -137,7 +137,7 @@ public int getMC();
 
 
 
-I chose to implement the graph data structure by two hash maps, one save nodes by their id (each node have his own hash map that saves the destination of the edge that get from it and the edge weight).
+We chose to implement the graph data structure by two hash maps, one save nodes by their id (each node have his own hash map that saves the destination of the edge that get from it and the edge weight).
 The second hash map is a hash map for edges, it saves edge by string (e.g "1,8") and the weight of the edge.
 
 -AlgoGraphClass-
@@ -220,7 +220,7 @@ public boolean load(String file);
 ----------------------------------------------------------------------------end of the interface-------------------------------------------------------------------------------------------------------
 
 
-Because of the fact that i needed to use many algorithms to implements this class i assisted many data structure.
+Because of the fact that we needed to use many algorithms to implements this class we assisted many data structure.
 GraphClass g - The graph which the algorithms in this class are run on.
     
 HashMap<Integer, Double> dist - saving the shortest path for every node in the graph.
@@ -243,7 +243,7 @@ is connected = 6 ms
 center = 3347 ms
 shortest path (1,999) = 2 ms
 
-I couldn't run the program for the bigger graphs because of the size of the file.
+We couldn't run the program for the bigger graphs because of the size of the file.
 
 *How to open the jar file*
     
@@ -267,7 +267,7 @@ I couldn't run the program for the bigger graphs because of the size of the file
     
  -enjoy (:
 
-CHECK
+
 
 
 
