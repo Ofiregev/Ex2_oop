@@ -2,9 +2,7 @@
 package GUI;
 
 import api.*;
-import classes.AlgoGraphClass;
-import classes.Edge;
-import classes.GraphClass;
+import classes.*;
 
 
 import javax.swing.*;
@@ -40,15 +38,15 @@ public class GraphFrame extends JFrame implements ActionListener {
     JButton button;
     GraphPanel w;
 
-    ImageIcon loadIcon ;
-    ImageIcon exitIcon ;
-    ImageIcon saveIcon ;
-    ImageIcon GraphIcon ;
+    ImageIcon loadIcon;
+    ImageIcon exitIcon;
+    ImageIcon saveIcon;
+    ImageIcon GraphIcon;
     ImageIcon DGraphIcon;
-    ImageIcon shortIcon ;
+    ImageIcon shortIcon;
     ImageIcon addGraphIcon;
 
-    int i,j=0;
+    int i, j = 0;
 
     int upd;
 
@@ -73,9 +71,9 @@ public class GraphFrame extends JFrame implements ActionListener {
         this.exitIcon = scaleImageIcon(exitIcon, 30, 30);
         this.GraphIcon = scaleImageIcon(GraphIcon, 40, 40);
 
-        this.DGraphIcon= scaleImageIcon(DGraphIcon, 40, 40);
+        this.DGraphIcon = scaleImageIcon(DGraphIcon, 40, 40);
         this.shortIcon = scaleImageIcon(shortIcon, 30, 30);
-        this.addGraphIcon= scaleImageIcon(addGraphIcon, 40, 50);
+        this.addGraphIcon = scaleImageIcon(addGraphIcon, 40, 50);
         this.setTitle("My Graph");
 
         menuBar = new JMenuBar();
@@ -85,7 +83,7 @@ public class GraphFrame extends JFrame implements ActionListener {
         menuBar.add(algorithms);
 
         loadGraph = new JMenuItem("load graph");
-        newFile  = new JMenuItem("Open new graph");
+        newFile = new JMenuItem("Open new graph");
         saveGraph = new JMenuItem("save graph");
 
         center = new JMenuItem("get center");
@@ -116,7 +114,8 @@ public class GraphFrame extends JFrame implements ActionListener {
         SpL.addActionListener(this);
         isConectted.addActionListener(this);
         removeNode.addActionListener(this);
-        /* */ remove.addActionListener(this);
+        /* */
+        remove.addActionListener(this);
         addNode.addActionListener(this);
         removeEdge.addActionListener(this);
         nodeSize.addActionListener(this);
@@ -132,7 +131,6 @@ public class GraphFrame extends JFrame implements ActionListener {
         this.addNode.setIcon(this.addGraphIcon);
         this.getEdge.setIcon(this.loadIcon);
         this.getNode.setIcon(this.loadIcon);
-
 
 
         GraphMenu.add(loadGraph);
@@ -153,8 +151,8 @@ public class GraphFrame extends JFrame implements ActionListener {
         algorithms.add(isConectted);
         algorithms.add(tsp);
 
-        GraphMenu.setFont( new Font(Font.SERIF, Font.PLAIN,  16));
-        algorithms.setFont( new Font(Font.SERIF, Font.PLAIN,  16));
+        GraphMenu.setFont(new Font(Font.SERIF, Font.PLAIN, 16));
+        algorithms.setFont(new Font(Font.SERIF, Font.PLAIN, 16));
 
 
         this.setJMenuBar(menuBar);
@@ -170,17 +168,18 @@ public class GraphFrame extends JFrame implements ActionListener {
         Image newimg = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(newimg);
     }
-    public void openF(){
+
+    public void openF() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new FlowLayout());
         this.button = new JButton("Select File");
         this.button.addActionListener(this);
-        this.add(this.button,BorderLayout.EAST);
+        this.add(this.button, BorderLayout.EAST);
         //this.pack();
         this.setVisible(true);
     }
-    public void l_G(GraphPanel c)
-    {
+
+    public void l_G(GraphPanel c) {
 
         this.add(this.c);
         System.out.println("loaded");
@@ -191,20 +190,19 @@ public class GraphFrame extends JFrame implements ActionListener {
 
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loadGraph) {
-            if(j>0)
-            {
+            if (j > 0) {
                 this.removeAll();
-                System.out.println("j"+j+"and loadG:" +this.c.graphClass.nodeSize());
+                System.out.println("j" + j + "and loadG:" + this.c.graphClass.nodeSize());
                 this.add(this.c);
-                System.out.println("j"+j+"and loadG:" +this.c.graphClass.nodeSize());
+                System.out.println("j" + j + "and loadG:" + this.c.graphClass.nodeSize());
                 repaint();
-            }
-           else {
-               // removeAll();
-               l_G(this.c);
+            } else {
+                // removeAll();
+                l_G(this.c);
             }
 //            System.out.println("loaded");
 //            repaint();
@@ -231,8 +229,8 @@ public class GraphFrame extends JFrame implements ActionListener {
 //            }
 
 
-           // revalidate();
-      //  }
+        // revalidate();
+        //  }
         else if (e.getSource() == saveGraph) {
             String s = JOptionPane.showInputDialog("Please enter an address");
             try {
@@ -261,8 +259,7 @@ public class GraphFrame extends JFrame implements ActionListener {
                 i++;
             }
             JOptionPane.showMessageDialog(null, "The shortest path is:" + s, "Shortest Path List", JOptionPane.PLAIN_MESSAGE);
-        } else if (e.getSource() == isConectted)
-        {
+        } else if (e.getSource() == isConectted) {
 
             JOptionPane.showMessageDialog(null, this.a.isConnected(), "Is Connected", JOptionPane.PLAIN_MESSAGE);
 
@@ -275,20 +272,25 @@ public class GraphFrame extends JFrame implements ActionListener {
             repaint();
 
         } else if (e.getSource() == addNode) {
-            try {
-                w = new GraphPanel(new GraphClass());
 
-                this.add(w);
-                String r = JOptionPane.showInputDialog("please enter the id of the node");
-                String s1 = JOptionPane.showInputDialog("please enter the location of the node -x");
-                String s2 = JOptionPane.showInputDialog("please enter the location of the node -y");
-                w.addNode(Integer.parseInt(r), Integer.parseInt(s1), Integer.parseInt(s2));
-                this.add(w);
-                repaint();
-                System.out.println("done");
+            this.remove(this.c);
+            GraphClass temp = this.c.graphClass;
+            //this.add(w);
+
+            String r = JOptionPane.showInputDialog("please enter the id of the node");
+            String s1 = JOptionPane.showInputDialog("please enter the location of the node -x");
+            String s2 = JOptionPane.showInputDialog("please enter the location of the node -y");
+            String bla = s1 + "," + s2 + ",0.0";
+            temp.addNode(new Node(Integer.parseInt(r), new GeoLocationClass(bla)));
+            try {
+                this.c = new GraphPanel(temp);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
+            this.add(c);
+            this.repaint();
+            this.revalidate();
+            System.out.println("done");
 
 
         } else if (e.getSource() == removeEdge) {
@@ -346,46 +348,6 @@ public class GraphFrame extends JFrame implements ActionListener {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //package GUI;
 //
 //import api.*;
@@ -395,46 +357,6 @@ public class GraphFrame extends JFrame implements ActionListener {
 //import java.awt.*;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //import java.io.IOException;

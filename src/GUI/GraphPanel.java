@@ -26,7 +26,7 @@ public class GraphPanel extends JPanel {
 
 
     GraphPanel(GraphClass graphClass) throws IOException {
-        this.screenSize =Toolkit.getDefaultToolkit().getScreenSize();
+        this.screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         this.setPreferredSize(screenSize);
         this.setBackground(new Color(0x9FADBA));
@@ -41,16 +41,16 @@ public class GraphPanel extends JPanel {
 
 
     }
-    private void setLimits(){
+
+    private void setLimits() {
         Iterator<NodeData> n = this.graphClass.nodeIter();
         NodeData node;
-        if(n.hasNext())
-        {
-        node = n.next();
-        minX = node.getLocation().x();
-        minY = node.getLocation().y();
-        maxX = node.getLocation().x();
-        maxY = node.getLocation().y();
+        if (n.hasNext()) {
+            node = n.next();
+            minX = node.getLocation().x();
+            minY = node.getLocation().y();
+            maxX = node.getLocation().x();
+            maxY = node.getLocation().y();
         }
         while (n.hasNext()) {
             node = n.next();
@@ -70,7 +70,7 @@ public class GraphPanel extends JPanel {
     public void draw(Graphics g) {
         g.setFont(new Font("david", Font.BOLD, 14));
         g.drawString("Ofir Regev", 1200, 30);
-        g.drawString(String.valueOf("MC: "+this.graphClass.getMC()),1200,50);
+        g.drawString(String.valueOf("MC: " + this.graphClass.getMC()), 1200, 50);
         Iterator<EdgeData> iter2 = this.graphClass.edgeIter();
         while (iter2.hasNext()) {
             EdgeData edge = iter2.next();
@@ -102,7 +102,8 @@ public class GraphPanel extends JPanel {
             g.drawString("" + N.getKey(), x + 8, y + 15);
         }
 
-        }
+    }
+
     private void drawArrowLine(Graphics g, int x1, int y1, int x2, int y2, int d, int h) {
         int dx = x2 - x1, dy = y2 - y1;
         double D = Math.sqrt(dx * dx + dy * dy);
@@ -125,14 +126,14 @@ public class GraphPanel extends JPanel {
     }
 
     public void addNode(int key, int x, int y) {
-        double newX = (x-12)/UX + minX;
-        double newY = (y-12)/UY + minY;
-        System.out.println("x" +x+"y="+y);
-        this.graphClass.addNode(new Node(key,new GeoLocationClass(newX+","+newY+",0")));
+        double newX = (x - 12) / UX + minX;
+        double newY = (y - 12) / UY + minY;
+        System.out.println("x" + x + "y=" + y);
+        this.graphClass.addNode(new Node(key, new GeoLocationClass(newX + "," + newY + ",0")));
         repaint();
         revalidate();
     }
-    }
+}
 
 
 
