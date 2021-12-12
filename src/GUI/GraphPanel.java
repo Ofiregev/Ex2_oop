@@ -70,7 +70,7 @@ public class GraphPanel extends JPanel {
     public void draw(Graphics g)
     {
         g.setFont(new Font("david", Font.BOLD, 14));
-        g.drawString("Ofir Regev & Ofek avi Saadon ", 1200, 30);
+        g.drawString("Ofir Regev & Ofek Saadon ", 1100, 30);
         g.drawString(String.valueOf("MC: " + this.graphClass.getMC()), 1200, 50);
         Iterator<EdgeData> iter2 = this.graphClass.edgeIter();
         while (iter2.hasNext())
