@@ -1,15 +1,10 @@
 import GUI.GraphFrame;
 import api.DirectedWeightedGraph;
 import api.DirectedWeightedGraphAlgorithms;
-import api.*;
+import classes.AlgoGraphClass;
+import classes.GraphClass;
 
 import java.io.IOException;
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.Scanner;
-import java.io.File;
 
 /**
  * This class is the main class for Ex2 - your implementation will be tested using this class.
@@ -56,8 +51,8 @@ public class Ex2 {
     }
 
     public static void main(String[] args) throws IOException {
-        getGrapg(args[0]);
-        runGUI(args[0]);
+        getGrapg("G1.json");
+        runGUI("G1.json");
 //        System.out.println(args.length);
 //       Scanner file = new Scanner(args[0]);
 //        System.out.println(file);

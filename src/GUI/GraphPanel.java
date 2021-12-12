@@ -1,6 +1,10 @@
 package GUI;
 
 import api.*;
+import classes.AlgoGraphClass;
+import classes.GeoLocationClass;
+import classes.GraphClass;
+import classes.Node;
 
 
 import javax.swing.*;
@@ -32,8 +36,8 @@ public class GraphPanel extends JPanel {
         System.out.println("start");
         setLimits();
 
-        UX = screenSize.getWidth() / Math.abs(maxX - minX) * 0.975;
-        UY = screenSize.getHeight() / Math.abs(maxY - minY) * 0.9;
+        UX = screenSize.getWidth() / Math.abs(maxX - minX) * 0.90;
+        UY = screenSize.getHeight() / Math.abs(maxY - minY) * 0.8;
 
 
     }
@@ -123,6 +127,7 @@ public class GraphPanel extends JPanel {
     public void addNode(int key, int x, int y) {
         double newX = (x-12)/UX + minX;
         double newY = (y-12)/UY + minY;
+        System.out.println("x" +x+"y="+y);
         this.graphClass.addNode(new Node(key,new GeoLocationClass(newX+","+newY+",0")));
         repaint();
         revalidate();

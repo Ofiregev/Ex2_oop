@@ -1,11 +1,13 @@
-package api;
+package classes;
 
 
-import java.util.Comparator;
+import api.GeoLocation;
+import api.NodeData;
+
 import java.util.HashMap;
 import java.util.Random;
 
-public class Node implements NodeData{
+public class Node implements NodeData {
     private int id;
     private GeoLocationClass location;
     private HashMap<Integer, Double> edge_hash_Map;

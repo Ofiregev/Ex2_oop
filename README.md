@@ -267,7 +267,7 @@ I couldn't run the program for the bigger graphs because of the size of the file
     
  -enjoy (:
 
-
+CHECK
 
 
 

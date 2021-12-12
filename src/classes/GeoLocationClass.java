@@ -1,4 +1,6 @@
-package api;
+package classes;
+
+import api.GeoLocation;
 
 public class GeoLocationClass implements GeoLocation {
     private String location;

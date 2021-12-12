@@ -1,6 +1,8 @@
-package api;
+package classes;
 
-public class Edge implements EdgeData{
+import api.EdgeData;
+
+public class Edge implements EdgeData {
     private int src;
     private int dst;
     private double weight;

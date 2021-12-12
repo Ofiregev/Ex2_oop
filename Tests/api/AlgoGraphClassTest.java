@@ -1,5 +1,7 @@
 package api;
 
+import classes.AlgoGraphClass;
+import classes.GraphClass;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

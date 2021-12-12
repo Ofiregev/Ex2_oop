@@ -2,13 +2,15 @@
 package GUI;
 
 import api.*;
+import classes.AlgoGraphClass;
+import classes.Edge;
+import classes.GraphClass;
 
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class GraphFrame extends JFrame implements ActionListener {
     ImageIcon shortIcon ;
     ImageIcon addGraphIcon;
 
-    int i=0;
+    int i,j=0;
 
     int upd;
 
@@ -177,36 +179,60 @@ public class GraphFrame extends JFrame implements ActionListener {
         //this.pack();
         this.setVisible(true);
     }
+    public void l_G(GraphPanel c)
+    {
 
+        this.add(this.c);
+        System.out.println("loaded");
+        System.out.println(this.c.graphClass.edgeSize());
+        repaint();
+        revalidate();
+        repaint();
+
+
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loadGraph) {
-            this.add(this.c);
-
-            revalidate();
-        }
-        else if (e.getSource() == newFile)
-        {
-            if (i<1) {
+            if(j>0)
+            {
+                this.removeAll();
+                System.out.println("j"+j+"and loadG:" +this.c.graphClass.nodeSize());
                 this.add(this.c);
-
-                openF();
-                JFileChooser fileChooser = new JFileChooser();
-                int response = fileChooser.showSaveDialog(newFile);
-                if (response == JFileChooser.APPROVE_OPTION) {
-                    File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                    System.out.println(file);
-                    this.add(this.c);
-
-
-                    revalidate();
-
-                }
+                System.out.println("j"+j+"and loadG:" +this.c.graphClass.nodeSize());
+                repaint();
             }
+           else {
+               // removeAll();
+               l_G(this.c);
+            }
+//            System.out.println("loaded");
+//            repaint();
+//            revalidate();
 
-
-            revalidate();
         }
+//        else if (e.getSource() == newFile)
+//        {
+//            if (i<1) {
+//                this.add(this.c);
+//
+//                openF();
+//                JFileChooser fileChooser = new JFileChooser();
+//                int response = fileChooser.showSaveDialog(newFile);
+//                if (response == JFileChooser.APPROVE_OPTION) {
+//                    File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+//                    System.out.println(file);
+//                    this.add(this.c);
+//
+//
+//                    revalidate();
+//
+//                }
+//            }
+
+
+           // revalidate();
+      //  }
         else if (e.getSource() == saveGraph) {
             String s = JOptionPane.showInputDialog("Please enter an address");
             try {
@@ -251,12 +277,12 @@ public class GraphFrame extends JFrame implements ActionListener {
         } else if (e.getSource() == addNode) {
             try {
                 w = new GraphPanel(new GraphClass());
+
                 this.add(w);
                 String r = JOptionPane.showInputDialog("please enter the id of the node");
                 String s1 = JOptionPane.showInputDialog("please enter the location of the node -x");
                 String s2 = JOptionPane.showInputDialog("please enter the location of the node -y");
                 w.addNode(Integer.parseInt(r), Integer.parseInt(s1), Integer.parseInt(s2));
-                a.getGraph().addNode((NodeData) w);
                 this.add(w);
                 repaint();
                 System.out.println("done");
