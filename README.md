@@ -238,13 +238,29 @@ Set p - for the Dijkstra function.
 int update - for the shortestPathDist function.
 
 
+Running time for G1 graph
+is connected = 3 ms
+center= 7 ms
+
+Running time for G2 graph
+is connected = 3 ms
+center = 7 ms
+
+Running time for G3 graph
+is connected = 6 ms
+center = 8 ms
+    
 Running time for 1000 nodes graph
 is connected = 6 ms
-center = 3347 ms
+center = 33 ms
 shortest path (1,999) = 2 ms
 
+Running time for 10000 nodes graph
+is connected =  timeout
+center = timeout
+    
 We couldn't run the program for the bigger graphs because of the size of the file.
-
+    
 *How to open the jar file*
     
     
