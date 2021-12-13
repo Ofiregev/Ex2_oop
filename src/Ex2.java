@@ -52,12 +52,12 @@ public class Ex2 {
 
     public static void main(String[] args) throws IOException {
 //        getGrapg(args[0]);
-//        runGUI(args[0]);
+        runGUI(args[0]);
 //        System.out.println(args.length);
 //       Scanner file = new Scanner(args[0]);
 //        System.out.println(file);
 //        getGrapg(String.valueOf("G2.json"));
-       runGUI("G2.json");
+//       runGUI("G2.json");
 //        getGrapgAlgo(String.valueOf(file));
 //       runGUI(String.valueOf(file));
 
