@@ -239,20 +239,23 @@ int update - for the shortestPathDist function.
 
 
 Running time for G1 graph
-is connected = 3 ms
-center= 7 ms
+is connected = 4 ms
+center= 32 ms
+shortest path (1,16) = 9 ms
 
 Running time for G2 graph
-is connected = 3 ms
-center = 7 ms
+is connected = 4 ms
+center = 36 ms
+shortest path (1,30) =7  ms
 
 Running time for G3 graph
-is connected = 6 ms
-center = 8 ms
+is connected = 5 ms
+center = 68 ms
+shortest path (1,47) =11  ms
     
 Running time for 1000 nodes graph
 is connected = 6 ms
-center = 33 ms
+center = 46 ms
 shortest path (1,999) = 2 ms
 
 Running time for 10000 nodes graph
