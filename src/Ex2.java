@@ -61,6 +61,6 @@ public class Ex2 {
 //        getGrapgAlgo(String.valueOf(file));
 //       runGUI(String.valueOf(file));
 
-
+;
     }
 }
