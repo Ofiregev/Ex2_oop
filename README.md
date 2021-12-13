@@ -1,7 +1,7 @@
 # Ex2
 
 
-@auther Ofir Regev, Ofek Avi Saadon, Elchai Agassi
+@auther Ofir Regev, Ofek Avi Saadon, Elhai Agassi
 
 *introduction*
 
@@ -133,7 +133,7 @@ public int edgeSize();
       
 public int getMC();
 
-----------------------------------------------------------------------------end of the interface-------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------end of the interface---------------------------------------------------------------------------------------------------------
 
 
 
@@ -238,13 +238,32 @@ Set p - for the Dijkstra function.
 int update - for the shortestPathDist function.
 
 
+Running time for G1 graph
+is connected = 4 ms
+center= 32 ms
+shortest path (1,16) = 9 ms
+
+Running time for G2 graph
+is connected = 4 ms
+center = 36 ms
+shortest path (1,30) =7  ms
+
+Running time for G3 graph
+is connected = 5 ms
+center = 68 ms
+shortest path (1,47) =11  ms
+    
 Running time for 1000 nodes graph
 is connected = 6 ms
-center = 3347 ms
+center = 46 ms
 shortest path (1,999) = 2 ms
 
+Running time for 10000 nodes graph
+is connected =  timeout
+center = timeout
+    
 We couldn't run the program for the bigger graphs because of the size of the file.
-
+    
 *How to open the jar file*
     
     
