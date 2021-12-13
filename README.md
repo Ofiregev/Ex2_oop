@@ -1,7 +1,7 @@
 # Ex2
 
 
-@auther Ofir Regev and Ofek Avi Saadon
+@auther Ofir Regev, Ofek Avi Saadon, Elchai Agassi
 
 *introduction*
 

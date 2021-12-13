@@ -363,6 +363,7 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
                     double weight = (double) objectHashMap2.get("w");
                     this.g.connect(src, dest, weight);
                 }
+                init(g);
             } catch (ParseException | IOException e) {
                 return false;
             }
@@ -372,38 +373,7 @@ public class AlgoGraphClass implements DirectedWeightedGraphAlgorithms {
         return true;
     }
 
-    public static void main(String[] args) {
-        DirectedWeightedGraph d =new GraphClass();
-        AlgoGraphClass a = new AlgoGraphClass();
-//        DirectedWeightedGraph f = new GraphClass();
-//        Node n0 = new Node(0, new GeoLocationClass("1,1,0"));
-//        Node n1 = new Node(1, new GeoLocationClass("0,0,0"));
-//        Node n2 = new Node(2, new GeoLocationClass("0,1,0"));
-//
-//
-//        f.addNode(n0);
-//        f.addNode(n1);
-//        f.addNode(n2);
-//        f.connect(n0.getKey(), n1.getKey(), 2);
-//        f.connect(n1.getKey(), n0.getKey(), 4);
-//
-//        f.connect(n1.getKey(), n2.getKey(), 3);
-//
-//        f.connect(n2.getKey(), n1.getKey(), 6);
-//
-//        f.connect(n0.getKey(), n2.getKey(), 5);
-//
-//        f.connect(n2.getKey(), n0.getKey(), 2);
-
-
-        List<NodeData> L =new ArrayList<>();
-        L.add(a.g.getNode(1));
-        L.add(a.g.getNode(2));
-        L.add(a.g.getNode(3));
-        System.out.println(a.tsp(L).toString());
-        System.out.println(a.center());
-
     }
-}
+
 
 
